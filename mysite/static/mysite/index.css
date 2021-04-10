@@ -138,6 +138,17 @@ p {
     display: block;
 }
 
+/* #header #signupid {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: .2rem;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    padding: 20px;
+    display: block;
+} */
+
 #header .nav-list ul a::after {
     content: attr(data-after);
     position: absolute;
@@ -231,7 +242,8 @@ p {
 /* Hero Section */
 
 #hero {
-    background-image: url(./static/main/hero-bg.png);
+    background-image: url(view-bg.jpg);
+    /* background-image: url('{{ STATIC_URL }}view-bg.jpg'); */
     background-size: cover;
     position: relative;
     background-position: top center;
@@ -246,7 +258,7 @@ p {
     width: 100%;
     content: '';
     background-color: black;
-    opacity: 0.6;
+    opacity: 0.35;
     z-index: -1;
 }
 
@@ -261,9 +273,19 @@ p {
     display: block;
     position: relative;
     width: fit-content;
-    font-size: 4rem;
+    /* font-size: 4rem; */
     color: transparent;
     animation: text_reveal 0.5s ease 1s forwards;
+    left: 2rem;
+    height: fit-content;
+    font-size: 13rem!important;
+    top: 12rem;
+    left: 11rem;
+}
+
+#hero .hero>div {
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 #hero h1:nth-child(1) {
@@ -320,6 +342,10 @@ p {
     margin: 0 auto;
 }
 
+#services .service-top>p{
+    font-size: 2rem;
+}
+
 #services .service-bottom {
     display: flex;
     justify-content: center;
@@ -336,7 +362,7 @@ p {
     flex-direction: column;
     padding: 30px;
     border-radius: 10px;
-    background-image: url(./images/img-1.png);
+    background-image: url(story-bg.jpg);
     background-size: cover;
     margin: 10px 5%;
     position: relative;
@@ -372,6 +398,7 @@ p {
 #services .service-item p {
     color: white;
     text-align: left;
+    /* font-size: 10px; */
 }
 
 /* End Service Section */
@@ -734,6 +761,9 @@ p {
 
 
     /* About */
+    #about{
+        background-color: #3cd6e2;
+    }
     #about .about {
         flex-direction: row;
     }

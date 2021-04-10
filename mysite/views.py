@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import auth, User, Group
+from django.contrib import messages
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'mysite/index.html', {})
+    
+    return render(request, 'mysite/index2.html')
+    
 
 
 def userSignup(request):
@@ -19,7 +23,7 @@ def userSignup(request):
                 else:
                     user = User.objects.create_user(username=username, password=password)
                     user.save()
-                    return render(request, 'mysite/user_signup.html/#login')
+                    return render(request, 'mysite/user_signup.html')
             else:
                 messages.info(request, 'Password Input Empty')
                 return redirect('UserSignup')
@@ -44,4 +48,31 @@ def login(request):
             return redirect('Login')
     
     else:
-        return render(request, 'main/login.html')
+        return render(request, 'mysite/login.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('index')
+
+def volSignup(request):
+    if request.method == 'POST':
+        username = request.POST['signupusername']
+        password = request.POST['signuppassword']
+        if username is not None:
+            if password is not None:
+                if User.objects.filter(username=username).exists():
+                    messages.info(request, 'Username Already Taken')
+                    return redirect('Volsignup')
+
+                else:
+                    user = User.objects.create_user(username=username, password=password)
+                    user.save()
+                    return render(request, 'mysite/Vsignup.html/#login')
+            else:
+                messages.info(request, 'Password Input Empty')
+                return redirect('Volsignup')
+        else:
+            messages.info(request, 'Username Input Empty')
+            return redirect('Volsignup')
+    else:
+        return render(request, "mysite/Vsignup.html")
